@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LampObserver.DeviceManager.UpdateMessage;
 
 namespace LampObserver.DeviceManager
 {
@@ -19,10 +20,10 @@ namespace LampObserver.DeviceManager
             _observers.Remove(o);
         }
  
-        public void NotifyObservers(EventType type)
+        public void NotifyObservers(UpdateInfo info)
         {
             foreach (var observer in _observers)
-                observer.Update(type);
+                observer.Update(info);
         }
     }
 }

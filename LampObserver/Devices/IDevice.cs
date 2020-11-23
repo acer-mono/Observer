@@ -1,6 +1,8 @@
+using LampObserver.DeviceManager;
+
 namespace LampObserver.Devices
 {
-    public interface IDevice
+    public interface IDevice : IObserver
     {
         
     }

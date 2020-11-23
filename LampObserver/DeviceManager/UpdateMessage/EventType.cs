@@ -1,4 +1,4 @@
-namespace LampObserver.DeviceManager
+namespace LampObserver.DeviceManager.UpdateMessage
 {
     public enum EventType
     {

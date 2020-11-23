@@ -1,8 +1,9 @@
 using LampObserver.DeviceManager;
+using LampObserver.DeviceManager.UpdateMessage;
 
 namespace LampObserver.Devices
 {
-    public class Lamp : IObserver, IDevice
+    public class Lamp : IDevice
     {
         public bool IsStateCalm { get; private set; } = true; //покой true или тревога false - состояние лампочки
         public bool IsTurnedOn { get; private set; } = false; // включен свет - true или выключен свет - false 
@@ -29,9 +30,9 @@ namespace LampObserver.Devices
             }
         }
 
-        public void Update(EventType type)
+        public void Update(UpdateInfo message)
         {
-            switch (type)
+            switch (message.EventType)
             {
                 case EventType.ChangeLight:
                     SwitchLight();
