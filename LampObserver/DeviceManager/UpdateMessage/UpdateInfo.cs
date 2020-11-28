@@ -1,14 +1,14 @@
+using System;
+
 namespace LampObserver.DeviceManager.UpdateMessage
 {
-    public class UpdateInfo
+    public abstract class UpdateInfo
     {
-        private readonly EventType _type;
-        
-        public UpdateInfo(EventType type)
+        protected UpdateInfo(Guid roomId)
         {
-            _type = type;
+            RoomId = roomId;
         }
         
-        public EventType EventType => _type;
+        public Guid RoomId { get; }
     }
 }

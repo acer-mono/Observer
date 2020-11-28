@@ -1,3 +1,4 @@
+using System;
 using LampObserver.DeviceManager;
 using LampObserver.DeviceManager.UpdateMessage;
 
@@ -9,6 +10,13 @@ namespace LampObserver.Devices
         public bool IsTurnedOn { get; private set; } = false; // включен свет - true или выключен свет - false 
         public bool IsAuto { get; private set; } = true; // режим автоматический - true или ручной - false
 
+        public Guid RoomId { get; }
+
+        public Lamp(Guid roodId)
+        {
+            RoomId = roodId;
+        }
+        
         private void SwitchState()
         {
             IsStateCalm = !IsStateCalm;
@@ -30,20 +38,31 @@ namespace LampObserver.Devices
             }
         }
 
-        public void Update(UpdateInfo message)
+        public void SwitchLighting(SwitchLightingMessage lightingMessage)
         {
-            switch (message.EventType)
+            if (!lightingMessage.RoomId.Equals(RoomId))
             {
-                case EventType.ChangeLight:
-                    SwitchLight();
-                    break;
-                case EventType.ChangeMode:
-                    SwitchMode();
-                    break;
-                case EventType.ChangeState:
-                    SwitchState();
-                    break;
+                return;
             }
+            SwitchLight();
+        }
+
+        public void SwitchReactionMode(ReactionModeMessage message)
+        {
+            if (!message.RoomId.Equals(RoomId))
+            {
+                return;
+            }
+            SwitchMode();
+        }
+
+        public void SwitchAlertState(AlertStateMessage stateMessage)
+        {
+            if (!stateMessage.RoomId.Equals(RoomId))
+            {
+                return;
+            }
+            SwitchState();
         }
     }
 }

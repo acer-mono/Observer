@@ -4,6 +4,9 @@ namespace LampObserver.DeviceManager
 {
     public interface IObserver
     {
-        void Update(UpdateInfo message);
+
+        void SwitchLighting(SwitchLightingMessage lightingMessage);
+        void SwitchReactionMode(ReactionModeMessage message);
+        void SwitchAlertState(AlertStateMessage stateMessage);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LampObserver.DeviceManager.UpdateMessage;
 
@@ -22,8 +23,23 @@ namespace LampObserver.DeviceManager
  
         public void NotifyObservers(UpdateInfo info)
         {
-            foreach (var observer in _observers)
-                observer.Update(info);
+            switch(info)
+            {
+                case AlertStateMessage alertMessage:
+                    foreach (var observer in _observers)
+                        observer.SwitchAlertState(alertMessage);
+                    break;
+                case SwitchLightingMessage lightingMessage:
+                    foreach (var observer in _observers)
+                        observer.SwitchLighting(lightingMessage);
+                    break;
+                case ReactionModeMessage reactionMessage:
+                    foreach (var observer in _observers)
+                        observer.SwitchReactionMode(reactionMessage);
+                    break;
+                default:
+                    throw new ArgumentException($"Unknown message type: {info.GetType().Name}");
+            }
         }
     }
 }
