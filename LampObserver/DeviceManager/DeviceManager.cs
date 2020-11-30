@@ -6,22 +6,22 @@ namespace LampObserver.DeviceManager
 {
     public class DeviceManager : IObservable
     {
-        private readonly List<IObserver> _observers;
+        private readonly List<ILampObserver> _observers;
         public DeviceManager()
         {
-            _observers = new List<IObserver>();
+            _observers = new List<ILampObserver>();
         }
-        public void AddObserver(IObserver o)
+        public void AddObserver(ILampObserver o)
         {
             _observers.Add(o);
         }
  
-        public void RemoveObserver(IObserver o)
+        public void RemoveObserver(ILampObserver o)
         {
             _observers.Remove(o);
         }
  
-        public void NotifyObservers(UpdateInfo info)
+        public void NotifyObservers(DeviceMessage info)
         {
             switch(info)
             {

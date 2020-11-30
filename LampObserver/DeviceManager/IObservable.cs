@@ -4,8 +4,8 @@ namespace LampObserver.DeviceManager
 {
     public interface IObservable
     {
-        void AddObserver(IObserver observer);
-        void RemoveObserver(IObserver observer);
-        void NotifyObservers(UpdateInfo type);
+        void AddObserver(ILampObserver lampObserver);
+        void RemoveObserver(ILampObserver lampObserver);
+        void NotifyObservers(DeviceMessage type);
     }
 }

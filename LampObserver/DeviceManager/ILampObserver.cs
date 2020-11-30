@@ -1,8 +1,9 @@
 using LampObserver.DeviceManager.UpdateMessage;
+using LampObserver.Devices;
 
 namespace LampObserver.DeviceManager
 {
-    public interface IObserver
+    public interface ILampObserver : IDevice
     {
 
         void SwitchLighting(SwitchLightingMessage lightingMessage);

@@ -2,7 +2,7 @@ using System;
 
 namespace LampObserver.DeviceManager.UpdateMessage
 {
-    public class ReactionModeMessage : UpdateInfo
+    public class ReactionModeMessage : DeviceMessage
     {
         public ReactionModeMessage(Guid roomId) : base(roomId)
         {

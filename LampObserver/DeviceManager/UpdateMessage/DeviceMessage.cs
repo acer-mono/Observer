@@ -2,9 +2,9 @@ using System;
 
 namespace LampObserver.DeviceManager.UpdateMessage
 {
-    public abstract class UpdateInfo
+    public abstract class DeviceMessage
     {
-        protected UpdateInfo(Guid roomId)
+        protected DeviceMessage(Guid roomId)
         {
             RoomId = roomId;
         }

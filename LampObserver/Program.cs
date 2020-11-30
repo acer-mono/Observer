@@ -10,9 +10,9 @@ namespace LampObserver
         {
             var room1 = Guid.NewGuid();
             var room2 = Guid.NewGuid();
-            var lamp1 = new Lamp(room1);
-            var lamp2 = new Lamp(room2);
-            var lamp3 = new Lamp(room2);
+            var lamp1 = new LampDevice(room1);
+            var lamp2 = new LampDevice(room2);
+            var lamp3 = new LampDevice(room2);
             
             var deviceManager = new DeviceManager.DeviceManager();
             deviceManager.AddObserver(lamp1);
